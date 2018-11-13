@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Marvel Viewer</title>
-    <link rel="stylesheet" href="{{ url('lib/picnic/releases/picnic.min.css') }}">
+    <link rel="stylesheet" href="{{ url('css/picnic.min.css') }}">
     <link rel="stylesheet" href="{{ url('css/style.css') }}">
 </head>
 <body>
