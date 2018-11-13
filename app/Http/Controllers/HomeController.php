@@ -4,12 +4,17 @@ namespace App\Http\Controllers;
 
 use GuzzleHttp\Client;
 use Illuminate\Http\Request;
+use Illuminate\Pagination\LengthAwarePaginator;
+use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Cache;
 
 class HomeController extends Controller
 {
     private $client;
 
+    /**
+     * HomeController constructor.
+     */
     public function __construct()
     {
         $timestamp = time();
@@ -26,6 +31,10 @@ class HomeController extends Controller
 
     }
 
+    /**
+     * @param Request $request
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function comics(Request $request)
     {
         $searchEntry = '';
@@ -51,6 +60,10 @@ class HomeController extends Controller
 
     }
 
+    /**
+     * @param $id
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function comic($id)
     {
         $pageData = [];
@@ -69,5 +82,26 @@ class HomeController extends Controller
         }
 
         return view('comic', $pageData);
+    }
+
+    public function characters(Request $request)
+    {
+        $characters = Cache::get('characters');
+
+        $currentPage = LengthAwarePaginator::resolveCurrentPage();
+
+        if (is_null($currentPage)) {
+            $currentPage = 1;
+        }
+
+        $characters_collection = new Collection($characters);
+
+        $items_per_page = 8;
+
+        $current_page_results = $characters_collection->slice(($currentPage - 1) * $items_per_page, $items_per_page)->all();
+        $paginated_results = new LengthAwarePaginator($current_page_results, count($characters_collection), $items_per_page);
+
+        return view('characters', ['paginated_results' => $paginated_results, 'characters' => $characters]);
+
     }
 }
