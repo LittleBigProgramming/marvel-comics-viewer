@@ -14,7 +14,7 @@
         <div id="comics" class="results">
             @foreach($comics as $com)
                 <article class="card">
-                    <img src="{{ $com['thumbnail']['path'] }}/portrait_incredible.jpg" alt="{{ $com['title'] }} thumbnail">
+                    <a href="/comics/{{ $com['id'] }}"><img src="{{ $com['thumbnail']['path'] }}/portrait_incredible.jpg" alt="{{ $com['title'] }} thumbnail"></a>
                     <footer>
                         <h5>
                             <a href="/comics/{{ $com['id'] }}" class="card-title">{{ $com['title'] }}</a>
@@ -26,5 +26,6 @@
                 </article>
             @endforeach
         </div>
+        <div>Data provided by Marvel. © 2018 Marvel</div>
     </div>
 @stop

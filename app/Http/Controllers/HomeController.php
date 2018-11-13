@@ -51,4 +51,23 @@ class HomeController extends Controller
 
     }
 
+    public function comic($id)
+    {
+        $pageData = [];
+
+        $response = $this->client->get('comics/' . $id);
+        $response = json_decode($response->getBody(), true);
+
+        $comic = $response['data']['results'][0];
+        $pageData['comic'] = $comic;
+
+        if(!empty($comic['series'])){
+            $series_response = $this->client->get($comic['series']['resourceURI']);
+            $series_response = json_decode($series_response->getBody(), true);
+
+            $pageData['series'] = $series_response['data']['results'][0];
+        }
+
+        return view('comic', $pageData);
+    }
 }
