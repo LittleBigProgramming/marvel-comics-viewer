@@ -50,7 +50,7 @@ class HomeController extends Controller
 
             $comics = $response['data']['results'];
 
-        } else{
+        } else {
             $comics = Cache::get('comics');
             shuffle($comics);
             $comics = array_slice($comics, 0, 20);

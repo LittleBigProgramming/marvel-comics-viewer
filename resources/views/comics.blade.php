@@ -26,6 +26,6 @@
                 </article>
             @endforeach
         </div>
-        <div>Data provided by Marvel. © 2018 Marvel</div>
+        <div><a href="http://marvel.com">Data provided by Marvel. © 2018 Marvel</a></div>
     </div>
 @stop
