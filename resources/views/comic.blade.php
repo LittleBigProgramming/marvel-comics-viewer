@@ -4,10 +4,11 @@
 
         <div class="results">
             <article>
+                <h2>{{ $comic['title'] }}</h2>
+
                 <img src="{{ $comic['thumbnail']['path'] }}.jpg" alt="{{ $comic['title'] }} thumbnail">
 
-                <h2>{{ $comic['title'] }}</h2>
-                <p>
+                <p class="description">
                     {{ $comic['description'] }}
                 </p>
                 <div id="series">
@@ -54,11 +55,9 @@
                             </ul>
                         </div>
                     @endif
-                    <div>Data provided by Marvel. © 2018 Marvel</div>
                 </div>
-                </footer>
             </article>
-
         </div>
+        <div><a href="http://marvel.com">Data provided by Marvel. © 2018 Marvel</a></div>
     </div>
 @stop

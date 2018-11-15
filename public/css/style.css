@@ -1,10 +1,78 @@
+@import url('https://fonts.googleapis.com/css?family=Cairo');
+
+body {
+    font-family: 'Cairo', sans-serif;
+}
+
+header {
+    /*background-image: url('../img/comics-banner.jpg');*/
+    background-color: black;
+}
+
+.navbar {
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.navbar li {
+    display: inline-block;
+    list-style: outside none none;
+    margin: 0.5em 1.5em;
+    padding: 0;
+}
+
+.navbar {
+    margin: 0;
+}
+
+.navbar a {
+    padding: 5px;
+    color: rgba(255, 255, 255, 0.5);
+    position: relative;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.navbar a::before, .navbar a::after {
+    -moz-transition: all 0.25s cubic-bezier(0.6, -0.28, 0.735, 0.045);
+    -o-transition: all 0.25s cubic-bezier(0.6, -0.28, 0.735, 0.045);
+    -webkit-transition: all 0.25s cubic-bezier(0.6, -0.28, 0.735, 0.045);
+    transition: all 0.25s cubic-bezier(0.6, -0.28, 0.735, 0.045);
+    height: 2px;
+    position: absolute;
+    content: "";
+    background-color: #ff0004;
+    width: 0;
+}
+.navbar a::before {
+    top: 0;
+    left: 0;
+}
+.navbar a::after {
+    bottom: 0;
+    right: 0;
+}
+
+.navbar a:hover,
+.navbar .active a {
+    color: #fff;
+}
+
+.navbar a:hover:before,
+.navbar .active a:before,
+.navbar a:hover:after,
+.navbar .active a:after {
+    width: 100%;
+}
+
 #wrapper {
-    width: 900px;
     margin: 0 auto;
 }
 
 #query {
-    width: 700px;
+    width: 66%;
+    text-align: center;
+    margin: auto;
 }
 
 .card {
@@ -36,8 +104,63 @@
     overflow: auto;
 }
 
+.results article {
+    text-align: left;
+}
+
+.results img {
+    max-height: 500px;
+}
+
+.results .description {
+    width: 40%;
+    display: inline-block;
+    text-align: left;
+    margin: auto;
+    margin-left: 20px;
+    vertical-align: top;
+}
+
+.creators, .characters, .stories {
+    display: inline-block;
+    width: 32%;
+    vertical-align: top;
+}
+
+#content {
+    width: 80%;
+    margin: auto;
+}
+
 .pagination li {
     display: inline-block;
     padding: 30px;
     list-style: none;
+}
+
+@media only screen
+and (max-device-width: 1024px)
+and (orientation: portrait) {
+    .navbar li {
+        margin: 0.5em 0.7em;
+    }
+
+    .card {
+        width: 45%;
+    }
+
+    #comics .card {
+        height: 450px;
+    }
+
+    .results .description {
+        width: 80%;
+        margin: 0;
+    }
+
+    .creators, .characters, .stories {
+        display: inline-block;
+        width: 80%;
+        vertical-align: top;
+    }
 }

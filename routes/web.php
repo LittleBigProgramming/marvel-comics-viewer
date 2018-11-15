@@ -11,7 +11,7 @@
 |
 */
 
-Route::get('/', 'HomeController@comics');
-Route::get('/comics', 'HomeController@comics');
+Route::get('/', 'HomeController@comics')->name('comics');
+Route::get('/comics', 'HomeController@comics')->name('comics');
 Route::get('/comics/{id}', 'HomeController@comic');
-Route::get('/characters', 'HomeController@characters');
+Route::get('/characters', 'HomeController@characters')->name('characters');

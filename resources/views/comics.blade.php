@@ -5,13 +5,12 @@
         <h2>Comics</h2>
         <form action="/comics">
             <p>
-                <label for="query">Query</label>
                 <input type="text" name="query" id="query" value="{{ $query }}">
                 <button>Search</button>
             </p>
         </form>
 
-        <div id="comics" class="results">
+        <div id="comics" class="flex results">
             @foreach($comics as $com)
                 <article class="card">
                     <a href="/comics/{{ $com['id'] }}"><img src="{{ $com['thumbnail']['path'] }}/portrait_incredible.jpg" alt="{{ $com['title'] }} thumbnail"></a>
